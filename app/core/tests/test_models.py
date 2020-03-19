@@ -13,7 +13,8 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(user.email, email)
-        self.assertTrue(user.check_password(password)) # пароль зашифрован
+        # пароль зашифрован
+        self.assertTrue(user.check_password(password))
 
     def test_new_user_email_normalized(self):
         '''Test for email case-insensetive'''
@@ -23,7 +24,7 @@ class ModelTests(TestCase):
 
     def test_new_user_invalid_email(self):
         '''Test creating user with no email raises error'''
-        # если тест не пройден, то тест провален
+        # еслине было исключения, то тест провален
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user(None, 'test123')
 
